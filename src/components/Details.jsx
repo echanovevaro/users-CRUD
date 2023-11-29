@@ -1,18 +1,53 @@
 /* eslint-disable react/prop-types */
-import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import classes from "./Details.module.css"
-import { useQuery } from "@tanstack/react-query"
-import { fetchUser } from "../http"
+import { useQuery, useMutation } from "@tanstack/react-query"
+import { deleteUser, fetchUser, queryClient } from "../http"
 import { useParams } from "react-router-dom"
+import { useState } from "react"
+import Modal from "./Modal"
 export const Details = () => {
+  const [isdeleting, setIsdeleting] = useState(false)
   const { userId } = useParams()
+  const navigate = useNavigate()
   const { data: user, isPending } = useQuery({
     queryKey: ["users", userId],
     queryFn: () => fetchUser(userId),
   })
-  console.log(user)
+
+  function handleStartDelteting() {
+    setIsdeleting(true)
+  }
+  function handleStopDelteting() {
+    setIsdeleting(false)
+  }
+  const { mutate } = useMutation({
+    mutationFn: (userId) => deleteUser(userId),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ key: ["users"] })
+      navigate("../")
+    },
+  })
+  const handleDelete = () => {
+    mutate(userId)
+  }
+  // console.log(user)
   return (
     <>
+      {isdeleting && (
+        <Modal onClose={handleStopDelteting}>
+          <h2>Are you sure?</h2>
+          <p>Delete user cannot be undone </p>
+          <div className={classes.btn}>
+            <button className={classes.btnDelete} onClick={handleDelete}>
+              Delete
+            </button>
+            <button className={classes.btnEdit} onClick={handleStopDelteting}>
+              Cancel
+            </button>
+          </div>
+        </Modal>
+      )}
       {isPending && <div>Loading...</div>}
       {user && (
         <>
@@ -21,12 +56,15 @@ export const Details = () => {
               <div className={classes.user}>
                 <div className={classes.dates}>
                   <img src={user.avatar} alt={user.firstName} />
-                  <h4>{user.firstName}</h4>
-                  <h4>{user.lastName}</h4>
+                  <div>
+                    <h4>
+                      {user.firstName} {user.lastName}
+                    </h4>
+                    <small>{user.email}</small>
+                  </div>
                 </div>
-                <small>{user.email}</small>
                 <h3>{user.catchPhrase}</h3>
-                <span>{user.catchPhraseNoun}</span>
+                <p>{user.paragraphs}</p>
               </div>
 
               <div className={classes.cardbody}>
@@ -38,8 +76,18 @@ export const Details = () => {
               </div>
             </div>
             <div className={classes.btn}>
-              <button className={classes.btnDelete}>Delete</button>
-              <button className={classes.btnEdit}>Edit</button>
+              <button
+                className={classes.btnDelete}
+                onClick={handleStartDelteting}
+              >
+                Delete
+              </button>
+              <button
+                className={classes.btnEdit}
+                onClick={() => navigate(`/users/${userId}/edit`)}
+              >
+                Edit
+              </button>
             </div>
           </div>
         </>

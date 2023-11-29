@@ -1,19 +1,7 @@
-import Modal from "../components/Modal"
-import UserForm from "../components/UserForm"
-import { useNavigate } from "react-router-dom"
+import CreateUser from "../components/CreateUser"
 
 function NewUser() {
-  const navigate = useNavigate()
-
-  function handleClose() {
-    navigate("../")
-  }
-
-  return (
-    <Modal onClose={handleClose}>
-      <UserForm />
-    </Modal>
-  )
+  return <CreateUser />
 }
 
 export default NewUser

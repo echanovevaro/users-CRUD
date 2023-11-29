@@ -6,6 +6,7 @@ import HomePage from "./pages/HomePage"
 import { queryClient } from "./http"
 import NewUser from "./pages/NewUser"
 import DetailUser from "./pages/DetailUser"
+import EditUser from "./pages/EditUser"
 const router = createBrowserRouter([
   {
     path: "/",
@@ -13,12 +14,20 @@ const router = createBrowserRouter([
     errorElement: <Errors />,
     children: [
       { index: true, element: <Navigate to="/users" replace /> },
+      // {
+      //   path: "/login",
+      //   element: <LoginPage />,
+      // },
       {
         path: "users",
         element: <HomePage />,
         children: [{ path: "new", element: <NewUser /> }],
       },
-      { path: "users/:userId", element: <DetailUser /> },
+      {
+        path: "users/:userId",
+        element: <DetailUser />,
+        children: [{ path: "edit", element: <EditUser /> }],
+      },
     ],
   },
 ])

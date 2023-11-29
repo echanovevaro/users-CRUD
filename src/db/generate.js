@@ -9,13 +9,11 @@ const generatePersonsData = (number) => {
       avatar: faker.image.avatarGitHub(),
       catchPhrase: faker.company.catchPhrase(2),
       email: faker.internet.email(),
-      urlLoremFlickr: faker.image.imageUrl(800, 600, "city", true),
+      urlLoremFlickr: faker.image.imageUrl(800, 600, "cities", true),
       firstName: faker.person.firstName(),
       lastName: faker.person.lastName(),
-      productDescription: faker.commerce.productDescription(),
-      company: faker.company.name(),
-      catchPhraseNoun: faker.company.catchPhraseNoun(),
-      imageNature: faker.image.nature(),
+      paragraphs: faker.lorem.paragraphs(2),
+      // company: faker.company.name(),
     })
     number--
   }
