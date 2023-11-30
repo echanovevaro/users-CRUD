@@ -1,22 +1,25 @@
-import { useRouteError } from "react-router-dom"
-import MainNavigation from "../components/MainNavigation"
+/* eslint-disable react/prop-types */
+// import { useRouteError } from "react-router-dom"
 
-export default function Errors() {
-  const error = useRouteError()
-  let title = "An error occurred"
-  let message = "something went wrong"
-  if (error.status === 404) {
-    title = "Page not found"
-    message = "Sorry, the page you requested could not be found."
-  } else {
-    message = error.message
-  }
+export default function Errors({ title, message }) {
+  console.log("message", message)
+  // const error = useRouteError()
+  // let title = "An error occurred"
+  // let message = "something went wrong"
+  // if (error.status === 404) {
+  //   title = "Page not found"
+  //   message = "Sorry, the page you requested could not be found."
+  // } else {
+  //   message = error.message
+  // }
 
   return (
-    <>
-      <MainNavigation />
-      <h1>{title}</h1>
-      <p>{message}</p>
-    </>
+    <div className="error-block">
+      <div className="error-block-icon">!</div>
+      <div className="error-block-text">
+        <h2>{title}</h2>
+        <p>{message}</p>
+      </div>
+    </div>
   )
 }

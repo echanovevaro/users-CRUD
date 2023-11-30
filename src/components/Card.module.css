@@ -63,3 +63,10 @@ small {
   font-size: 10px;
   color: #2b55e0;
 }
+
+.skeleton {
+  width: 800px;
+  height: 600px;
+  border: 1px solid black;
+  background-color: grey;
+}

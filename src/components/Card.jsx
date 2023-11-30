@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom"
 import classes from "./Card.module.css"
+import { LazyLoadImage } from "react-lazy-load-image-component"
+import PlaceHolder from "../assets/imgSkeleton.jpg"
 export const Card = ({ user }) => {
-  console.log(user)
   return (
     <>
       <div className={classes.cardheader}>
@@ -14,9 +15,12 @@ export const Card = ({ user }) => {
             </h4>
           </div>
         </div>
-        <img
+        <LazyLoadImage
+          loading="lazy"
           src={user.urlLoremFlickr}
           alt={user.firstName}
+          width={200}
+          PlaceholderSrc={PlaceHolder}
           className={classes.image}
         />
       </div>

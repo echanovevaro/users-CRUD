@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 export default function UserForm({ inputData, onSubmit, children }) {
   function handleSubmit(event) {
     event.preventDefault()
@@ -9,26 +10,30 @@ export default function UserForm({ inputData, onSubmit, children }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="form-group">
-        <label htmlFor="firstName">First Name</label>
-        <input
-          type="text"
-          className="form-control"
-          id="firstName"
-          name="firstName"
-          defaultValue={inputData?.firstName ?? ""}
-        />
-      </div>
-
-      <div className="form-group">
-        <label htmlFor="lastName">Last Name</label>
-        <input
-          type="text"
-          className="form-control"
-          id="lastName"
-          name="lastName"
-          defaultValue={inputData?.lastName ?? ""}
-        />
+      <div
+        className="form-group"
+        style={{ display: "flex", flexDirection: "row", gap: "1rem" }}
+      >
+        <div style={{ width: "50%" }}>
+          <label htmlFor="firstName">First Name</label>
+          <input
+            type="text"
+            className="form-control"
+            id="firstName"
+            name="firstName"
+            defaultValue={inputData?.firstName ?? ""}
+          />
+        </div>
+        <div style={{ width: "50%" }}>
+          <label htmlFor="lastName">Last Name</label>
+          <input
+            type="text"
+            className="form-control"
+            id="lastName"
+            name="lastName"
+            defaultValue={inputData?.lastName ?? ""}
+          />
+        </div>
       </div>
 
       <div className="form-group">

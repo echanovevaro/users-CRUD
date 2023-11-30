@@ -13,8 +13,8 @@ function MainNavigation() {
         Home
       </NavLink>
       <nav>
-        <ul className={classes.list}>
-          <li>
+        <ul>
+          <li className={classes.list}>
             <NavLink
               to="/users/new"
               className={({ isActive }) =>
