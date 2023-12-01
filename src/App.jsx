@@ -2,11 +2,13 @@ import { RouterProvider, createBrowserRouter, Navigate } from "react-router-dom"
 import { QueryClientProvider } from "@tanstack/react-query"
 import RootLayout from "./pages/Root"
 import Errors from "./pages/Errors"
-import HomePage from "./pages/HomePage"
+
 import { queryClient } from "./http"
 import NewUser from "./pages/NewUser"
 import DetailUser from "./pages/DetailUser"
 import EditUser from "./pages/EditUser"
+import HomePage from "./pages/HomePage"
+
 const router = createBrowserRouter([
   {
     path: "/",

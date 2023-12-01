@@ -2,7 +2,8 @@
 import { Link } from "react-router-dom"
 import classes from "./Card.module.css"
 import { LazyLoadImage } from "react-lazy-load-image-component"
-import PlaceHolder from "../assets/imgSkeleton.jpg"
+import "react-lazy-load-image-component/src/effects/blur.css"
+
 export const Card = ({ user }) => {
   return (
     <>
@@ -15,21 +16,20 @@ export const Card = ({ user }) => {
             </h4>
           </div>
         </div>
-        <LazyLoadImage
-          loading="lazy"
-          src={user.urlLoremFlickr}
-          alt={user.firstName}
-          width={200}
-          PlaceholderSrc={PlaceHolder}
-          className={classes.image}
-        />
       </div>
 
       <div className={classes.cardbody}>
+        <LazyLoadImage
+          src={user.urlLoremFlickr}
+          alt={user.firstName + " " + user.lastName} // use normal <img> attributes as props
+          loading="lazy"
+          effect="blur"
+        />
         <Link to={`/users/${user.id}`} className={classes.tag}>
           Details
         </Link>
-        <h4>{user.catchPhrase}</h4>
+
+        <p>{user.catchPhrase}</p>
         {/* <span>{user.catchPhraseNoun}</span>
         <small>{user.email}</small> */}
       </div>

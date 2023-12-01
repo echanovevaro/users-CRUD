@@ -1,10 +1,12 @@
+/* eslint-disable react/prop-types */
+
 import { Card } from "./Card"
 import classes from "./Cards.module.css"
 
-export const Cards = (props) => {
+export const Cards = ({ users }) => {
   return (
     <ul className={classes.cards}>
-      {props.users?.map((user) => (
+      {users?.map((user) => (
         <li key={user.id} className={classes.card}>
           <Card user={user} />
         </li>
