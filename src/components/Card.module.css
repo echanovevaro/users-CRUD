@@ -1,19 +1,16 @@
-.cardbody img {
+.card_body img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   aspect-ratio: 16/9;
+  border-radius: 7px;
 }
-.cardbody {
+.card_body {
   display: flex;
   flex-direction: column;
   justify-content: stretch;
   align-items: stretch;
   padding: 15px;
-}
-
-.cardbody img {
-  border-radius: 7px;
 }
 
 .tag {
@@ -71,11 +68,4 @@ small {
   padding: 1rem 0;
   font-size: 10px;
   color: #2b55e0;
-}
-
-.skeleton {
-  width: 800px;
-  height: 600px;
-  border: 1px solid black;
-  background-color: grey;
 }

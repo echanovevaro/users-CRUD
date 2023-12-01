@@ -73,7 +73,7 @@ small {
   display: flex;
   flex-grow: row;
   gap: 1rem;
-  padding: 2rem;
+  padding: 1rem 0;
 }
 button {
   color: #fff;

@@ -7,7 +7,7 @@ import "react-lazy-load-image-component/src/effects/blur.css"
 export const Card = ({ user }) => {
   return (
     <>
-      <div className={classes.cardheader}>
+      <div className={classes.card_header}>
         <div className={classes.user}>
           <img src={user.avatar} alt={user.firstName} />
           <div>
@@ -18,12 +18,13 @@ export const Card = ({ user }) => {
         </div>
       </div>
 
-      <div className={classes.cardbody}>
+      <div className={classes.card_body}>
         <LazyLoadImage
           src={user.urlLoremFlickr}
           alt={user.firstName + " " + user.lastName} // use normal <img> attributes as props
           loading="lazy"
           effect="blur"
+          // placeholderSrc="https://placehold.jp/3d4070/3d4070/800x600.png"
         />
         <Link to={`/users/${user.id}`} className={classes.tag}>
           Details
