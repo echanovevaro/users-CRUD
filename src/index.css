@@ -41,7 +41,7 @@
 
 body {
   margin: 0 auto;
-  max-width: 90%;
+  max-width: 80%;
   /* display: grid;
   grid-template-columns: 5% 1fr 5%; */
 }
@@ -124,6 +124,21 @@ h6 {
   cursor: pointer;
 }
 
+.btn-submit {
+  background-color: #2b55e0;
+  color: white;
+}
+
+a,
+a:hover,
+a:visited {
+  color: #2b55e0;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
 .form-group label {
   display: block;
   font-weight: bold;
@@ -186,4 +201,16 @@ h6 {
   color: #e0312b;
   font-size: 0.8rem;
   margin-top: 0.2rem;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+small {
+  padding: 0;
 }

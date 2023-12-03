@@ -101,13 +101,14 @@ const MyTextInput = ({ label, ...props }) => {
   // which we can spread on <input>. We can use field meta to show an error
   // message if the field is invalid and it has been touched (i.e. visited)
   const [field, meta] = useField(props)
+  console.log("field", field)
+  console.log("meta", meta)
+  console.log("props", props)
   return (
     <div className="form-group">
       <label htmlFor={props.name}>{label}</label>
       <input className="form-control" {...field} {...props} />
-      {meta.touched && meta.error ? (
-        <div className="error">{meta.error}</div>
-      ) : null}
+      {meta.touched && meta.error && <div className="error">{meta.error}</div>}
     </div>
   )
 }
@@ -117,9 +118,7 @@ const MyTextArea = ({ label, ...props }) => {
     <div className="form-group">
       <label htmlFor={props.name}>{label}</label>
       <textarea className="form-control" {...field} {...props} />
-      {meta.touched && meta.error ? (
-        <div className="error">{meta.error}</div>
-      ) : null}
+      {meta.touched && meta.error && <div className="error">{meta.error}</div>}
     </div>
   )
 }

@@ -47,7 +47,9 @@ function EditUser() {
                 <button type="submit" className={classes.btnEdit}>
                   Update
                 </button>
-                <button className={classes.btnCancel}>Cancel</button>
+                <button className={classes.btnCancel} onClick={handleClose}>
+                  Cancel
+                </button>
               </div>
             )}
           </UserForm>

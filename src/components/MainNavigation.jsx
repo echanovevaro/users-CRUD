@@ -23,6 +23,22 @@ function MainNavigation() {
             >
               New User
             </NavLink>
+            <NavLink
+              to="/login"
+              className={({ isActive }) =>
+                isActive ? classes.active : undefined
+              }
+            >
+              Login
+            </NavLink>
+            <NavLink
+              to="/signup"
+              className={({ isActive }) =>
+                isActive ? classes.active : undefined
+              }
+            >
+              Sign up
+            </NavLink>
           </li>
         </ul>
       </nav>

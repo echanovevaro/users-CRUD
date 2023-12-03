@@ -8,18 +8,25 @@ import NewUser from "./pages/NewUser"
 import DetailUser from "./pages/DetailUser"
 import EditUser from "./pages/EditUser"
 import HomePage from "./pages/HomePage"
+import AuthPage, { loginAction, signupAction } from "./pages/AuthPage"
+import { checkAuthLoader } from "./utils/auth"
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
-    errorElement: <Errors />,
     children: [
       { index: true, element: <Navigate to="/users" replace /> },
-      // {
-      //   path: "/login",
-      //   element: <LoginPage />,
-      // },
+      {
+        path: "/login",
+        element: <AuthPage />,
+        action: loginAction,
+      },
+      {
+        path: "/signup",
+        element: <AuthPage />,
+        action: signupAction,
+      },
       {
         path: "users",
         element: <HomePage />,
@@ -29,6 +36,7 @@ const router = createBrowserRouter([
         path: "users/:userId",
         element: <DetailUser />,
         children: [{ path: "edit", element: <EditUser /> }],
+        loader: checkAuthLoader,
       },
     ],
   },
